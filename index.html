@@ -11,17 +11,18 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #f8f8f3;
-        --ink: #121713;
-        --muted: #5d665f;
-        --line: #d9ddd5;
+        --bg: #f7f4ee;
+        --ink: #181713;
+        --muted: #686258;
+        --line: #ded7cb;
         --panel: #ffffff;
-        --green: #2f6b4f;
+        --green: #3d6f55;
         --lime: #b8d76b;
         --teal: #1f7480;
         --amber: #d79b31;
         --red: #b75952;
-        --shadow: 0 22px 70px rgba(18, 23, 19, 0.12);
+        --blue: #4c6c98;
+        --shadow: 0 26px 80px rgba(38, 31, 22, 0.14);
         --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
       }
 
@@ -35,7 +36,8 @@
 
       body {
         margin: 0;
-        background: var(--bg);
+        background:
+          linear-gradient(180deg, #fbf8f1 0%, var(--bg) 58%, #f4f0e7 100%);
         color: var(--ink);
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -54,7 +56,8 @@
         padding: 28px;
         border-bottom: 1px solid var(--line);
         background:
-          linear-gradient(90deg, rgba(248, 248, 243, 0.99), rgba(248, 248, 243, 0.88) 44%, rgba(248, 248, 243, 0.2)),
+          radial-gradient(circle at 18% 18%, rgba(197, 217, 113, 0.2), transparent 26%),
+          linear-gradient(90deg, rgba(247, 244, 238, 0.99), rgba(247, 244, 238, 0.9) 46%, rgba(247, 244, 238, 0.2)),
           url("assets/longterm-lime.png") right center / min(62vw, 940px) auto no-repeat;
       }
 
@@ -83,7 +86,7 @@
       .subtitle {
         max-width: 840px;
         margin: 28px 0 0;
-        color: #303932;
+        color: #302d27;
         font-size: clamp(19px, 2.2vw, 28px);
         line-height: 1.32;
       }
@@ -118,7 +121,7 @@
       }
 
       .button.secondary {
-        background: rgba(255, 255, 255, 0.64);
+        background: rgba(255, 255, 255, 0.68);
         color: var(--ink);
       }
 
@@ -139,7 +142,7 @@
         display: grid;
         grid-template-columns: 230px minmax(0, 1fr);
         gap: 42px;
-        width: min(1240px, calc(100% - 48px));
+        width: min(1260px, calc(100% - 52px));
         margin: 0 auto;
         padding: 38px 0 96px;
       }
@@ -149,9 +152,10 @@
         top: 24px;
         align-self: start;
         padding: 16px;
-        border: 1px solid var(--line);
+        border: 1px solid rgba(92, 81, 66, 0.16);
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.74);
+        background: rgba(255, 252, 246, 0.78);
+        backdrop-filter: blur(12px);
       }
 
       .toc strong {
@@ -221,8 +225,42 @@
       .lead {
         max-width: 870px;
         margin-top: 18px;
-        color: #39423b;
+        color: #39352e;
         font-size: 20px;
+      }
+
+      .story-block {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+        gap: 26px;
+        align-items: start;
+        margin-top: 26px;
+      }
+
+      .story-label {
+        position: sticky;
+        top: 26px;
+        color: var(--green);
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .story-copy {
+        display: grid;
+        gap: 18px;
+        color: #332f28;
+        font-size: 20px;
+      }
+
+      .story-copy p:first-child::first-letter {
+        float: left;
+        padding: 6px 8px 0 0;
+        color: var(--ink);
+        font-size: 58px;
+        font-weight: 850;
+        line-height: 0.82;
       }
 
       .abstract-text {
@@ -245,7 +283,7 @@
         padding: 20px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: var(--panel);
+        background: rgba(255, 252, 246, 0.86);
         transition: 160ms ease;
       }
 
@@ -281,7 +319,9 @@
         justify-content: space-between;
         padding: 28px;
         border-radius: 8px;
-        background: #14251e;
+        background:
+          linear-gradient(155deg, rgba(20, 37, 30, 0.98), rgba(43, 70, 51, 0.96)),
+          #14251e;
         color: white;
         box-shadow: var(--shadow);
       }
@@ -300,9 +340,9 @@
       .media-panel,
       .system-panel,
       .table-panel {
-        border: 1px solid var(--line);
+        border: 1px solid rgba(92, 81, 66, 0.15);
         border-radius: 8px;
-        background: var(--panel);
+        background: rgba(255, 252, 246, 0.92);
         box-shadow: 0 12px 34px rgba(18, 23, 19, 0.07);
       }
 
@@ -341,7 +381,7 @@
         height: 12px;
         overflow: hidden;
         border-radius: 999px;
-        background: #e8ece5;
+        background: #e8e0d4;
       }
 
       .fill {
@@ -349,7 +389,7 @@
         width: var(--w);
         height: 100%;
         border-radius: inherit;
-        background: linear-gradient(90deg, var(--green), var(--teal));
+        background: linear-gradient(90deg, var(--green), var(--blue));
         transition: 160ms ease;
       }
 
@@ -471,6 +511,30 @@
         gap: 18px;
       }
 
+      .result-note-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .result-note {
+        padding: 16px;
+        border: 1px solid rgba(92, 81, 66, 0.15);
+        border-radius: 8px;
+        background: rgba(255, 252, 246, 0.84);
+      }
+
+      .result-note strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .result-note p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
       .table-panel {
         overflow: hidden;
       }
@@ -579,7 +643,7 @@
         padding: 18px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #141914;
+        background: #171510;
         color: #e8eee8;
         font-family: var(--mono);
         font-size: 13px;
@@ -633,7 +697,9 @@
         .split,
         .shap-grid,
         .abstract-text,
-        .feature-grid {
+        .feature-grid,
+        .story-block,
+        .result-note-grid {
           grid-template-columns: 1fr;
         }
 
@@ -641,8 +707,12 @@
           min-height: 820px;
           padding: 22px 18px 44px;
           background:
-            linear-gradient(180deg, rgba(248, 248, 243, 0.98), rgba(248, 248, 243, 0.9) 58%, rgba(248, 248, 243, 0.48)),
+            linear-gradient(180deg, rgba(247, 244, 238, 0.98), rgba(247, 244, 238, 0.9) 58%, rgba(247, 244, 238, 0.48)),
             url("assets/longterm-lime.png") center bottom / min(94vw, 680px) auto no-repeat;
+        }
+
+        .story-label {
+          position: static;
         }
       }
     </style>
@@ -650,11 +720,11 @@
   <body>
     <header class="intro" id="title">
       <div class="intro-inner">
-        <p class="kicker">SOLAR / Sleep prediction from multimodal lifelog data</p>
-        <h1>Long-term anchors, target-day corrections.</h1>
+        <p class="kicker">SOLAR / Personalized sleep prediction</p>
+        <h1>Sleep prediction should remember the person.</h1>
         <p class="subtitle">
-          SOLAR predicts sleep-related targets by first estimating each participant's personal baseline, then refining
-          that anchor with day-specific sensor states and temporal-neighbor history.
+          A stepwise framework for lifelog data that separates stable personal routines from what changed on the target
+          day. Long-term history sets the anchor; daily sensor evidence decides the correction.
         </p>
         <p class="authors">
           Kyubin Kim*, Chanho Park*, Kyuho Lee*, Euntae Kim* &middot; Korea University
@@ -664,7 +734,7 @@
           <a class="button secondary" href="#results">Results</a>
           <a class="button secondary" href="#system">System</a>
         </div>
-        <p class="scroll-hint">Scroll to explore the method, tables, and analysis.</p>
+        <p class="scroll-hint">Scroll to read the project story, method, and interactive results.</p>
       </div>
     </header>
 
@@ -684,31 +754,40 @@
         <section id="abstract">
           <div class="section-head">
             <p class="section-label">Abstract</p>
-            <h2>Daily sleep data needs personal context.</h2>
+            <h2>Daily sleep data is personal before it is statistical.</h2>
             <p class="lead">
-              Wearables and smartphones produce dense behavioral and physiological traces, but a target-day value alone
-              is not enough. SOLAR explicitly separates stable individual state from temporary daily variation.
+              The same heart rate, activity level, screen time, or missing sensor record can mean different things for
+              different users. SOLAR treats sleep prediction as a personalized baseline problem first.
             </p>
           </div>
-          <div class="abstract-text">
-            <p>
-              The framework constructs long-term personalized features from accumulated behavioral history, including
-              rolling windows, cumulative statistics, same-weekday patterns, and missingness history.
-            </p>
-            <p>
-              It then generates target-specific anchors and refines them using target-day sensor states, deviations from
-              personal long-term states, and temporal-neighbor records from the same participant.
-            </p>
+          <div class="story-block">
+            <div class="story-label">What SOLAR changes</div>
+            <div class="story-copy">
+              <p>
+                Existing lifelog-based sleep predictors usually compress sensor streams into daily observations or
+                short-term summaries. That makes the target day easy to model, but it hides the user-specific rhythm
+                behind the numbers.
+              </p>
+              <p>
+                SOLAR builds long-term personalized features from accumulated behavioral history, then uses those
+                features to create a target-specific anchor prediction. The anchor is refined only after the model sees
+                how the target day deviates from the participant's own long-term state.
+              </p>
+              <p>
+                This gives the pipeline a clear interpretation: first estimate what is typical for this person, then
+                ask whether today's wearable and smartphone evidence should move the prediction up or down.
+              </p>
+            </div>
           </div>
         </section>
 
         <section id="motivation">
           <div class="section-head">
             <p class="section-label">Motivation</p>
-            <h2>Short windows miss the baseline.</h2>
+            <h2>Short windows miss the baseline that sleep depends on.</h2>
             <p class="lead">
-              In the paper, 28-day heart-rate history shows stronger absolute correlations than 3-day history across
-              multiple targets. The visualization below keeps the original figure but adds a hover summary.
+              The motivating analysis compares short and long heart-rate windows. Across multiple sleep targets, the
+              28-day rolling mean shows stronger absolute correlation than the 3-day rolling mean.
             </p>
           </div>
           <figure class="media-panel">
@@ -720,18 +799,18 @@
           <div class="feature-grid">
             <article class="feature">
               <span class="num">01</span>
-              <h3>Short-term dynamics</h3>
-              <p>1-7 day features capture recent behavioral changes before the prediction date.</p>
+              <h3>Recent dynamics</h3>
+              <p>1-7 day windows describe what changed recently: activity, physiological state, phone usage, and context.</p>
             </article>
             <article class="feature">
               <span class="num">02</span>
-              <h3>Long-term state</h3>
-              <p>14-28 day and cumulative statistics describe the participant's habitual baseline.</p>
+              <h3>Personal state</h3>
+              <p>14-28 day windows and cumulative statistics describe the habitual level the target day should be compared against.</p>
             </article>
             <article class="feature">
               <span class="num">03</span>
-              <h3>Short-long contrast</h3>
-              <p>Deviation features tell the model whether today is normal for this person or a temporary shift.</p>
+              <h3>Deviation signal</h3>
+              <p>Short-long contrasts let the model read a day as typical, unusually stressful, unusually inactive, or poorly observed.</p>
             </article>
           </div>
         </section>
@@ -739,10 +818,11 @@
         <section id="results">
           <div class="section-head">
             <p class="section-label">Benchmark</p>
-            <h2>SOLAR reaches the lowest test log-loss.</h2>
+            <h2>The result is not only lower loss. It is better ordered evidence.</h2>
             <p class="lead">
               The CH-2025 benchmark contains about 450 daily records from ten subjects and seven sleep targets. Hover
-              over bars or table rows to inspect exact scores.
+              over bars or table rows to inspect exact scores; the full model is the only one that uses the complete
+              long-term anchor-and-refine sequence.
             </p>
           </div>
           <div class="hero-result">
@@ -774,15 +854,29 @@
               <p class="chart-caption">Bar length is normalized to XGBoost, the largest log-loss in the comparison.</p>
             </div>
           </div>
+          <div class="result-note-grid">
+            <article class="result-note">
+              <strong>Against strong tabular learners</strong>
+              <p>SOLAR improves over CatBoost, LightGBM, XGBoost, and a CatBoost-LightGBM ensemble baseline.</p>
+            </article>
+            <article class="result-note">
+              <strong>Same evaluation surface</strong>
+              <p>All methods share preprocessing, split strategy, target-wise training, and average log-loss evaluation.</p>
+            </article>
+            <article class="result-note">
+              <strong>Calibration matters</strong>
+              <p>Log-loss rewards reliable probabilities, so the result reflects calibration rather than hard-label accuracy alone.</p>
+            </article>
+          </div>
         </section>
 
         <section id="system">
           <div class="section-head">
             <p class="section-label">SOLAR System</p>
-            <h2>Anchor first, refine only what remains.</h2>
+            <h2>Anchor first. Refine the residual. Calibrate by target.</h2>
             <p class="lead">
-              The page follows the paper pipeline: feature construction, temporal anchor prediction, residual
-              refinement, then target-specific history-aware adjustment.
+              SOLAR does not ask one learner to understand every signal at once. It divides prediction into the same
+              pieces the data suggests: personal baseline, day-specific variation, and target-specific temporal history.
             </p>
           </div>
           <div class="system-layout">
@@ -790,19 +884,19 @@
               <div class="flow" aria-label="SOLAR pipeline">
                 <div class="flow-step" data-tip="Feature construction: short-term, long-term, contrast, and personalized missingness features.">
                   <b>F</b>
-                  <div><h3>Personalized features</h3><p>Build temporal and subject-specific representations from lifelog history.</p></div>
+                  <div><h3>Personalized features</h3><p>Construct short-term, long-term, same-weekday, missingness, and deviation features from each participant's history.</p></div>
                 </div>
                 <div class="flow-step" data-tip="Step 1: target-wise stacking produces the personalized temporal anchor.">
                   <b>1</b>
-                  <div><h3>Temporal anchor</h3><p>Estimate a baseline probability from long-term state and calendar/history priors.</p></div>
+                  <div><h3>Temporal anchor</h3><p>Combine target-wise prediction sources through stacking to estimate a stable baseline probability.</p></div>
                 </div>
                 <div class="flow-step" data-tip="Step 2: residual learners correct the anchor using target-day deviations.">
                   <b>2</b>
-                  <div><h3>Residual refinement</h3><p>Add only the correction that target-day sensor evidence supports.</p></div>
+                  <div><h3>Residual refinement</h3><p>Learn the correction left unexplained by the anchor, using target-day sensor states and deviations.</p></div>
                 </div>
                 <div class="flow-step" data-tip="Step 3: temporal-neighbor priors are applied target by target when validation improves.">
                   <b>3</b>
-                  <div><h3>History-aware output</h3><p>Use nearby records from the same participant for conservative calibration.</p></div>
+                  <div><h3>History-aware output</h3><p>Apply temporal-neighbor priors only for targets where validation shows that continuity helps.</p></div>
                 </div>
               </div>
             </div>
@@ -817,9 +911,10 @@
         <section id="ablation">
           <div class="section-head">
             <p class="section-label">Ablation</p>
-            <h2>Each stage contributes, and long-term features matter.</h2>
+            <h2>Ablations show the framework is doing real work.</h2>
             <p class="lead">
-              The ablations are kept as interactive tables. Hover a row to pin the exact OOF and test values.
+              Removing later refinement stages weakens the model. Removing long-term features causes an even larger
+              test loss increase, which supports the central claim that accumulated personal history is predictive.
             </p>
           </div>
           <div class="split">
@@ -852,10 +947,10 @@
         <section id="analysis">
           <div class="section-head">
             <p class="section-label">Long-Term Analysis</p>
-            <h2>Objective targets rely more heavily on long-term density.</h2>
+            <h2>Long-term features are especially visible in objective sleep targets.</h2>
             <p class="lead">
-              SHAP density is normalized by feature count. The S-series targets consistently show stronger long-term
-              density than short-term density.
+              SHAP density is normalized by feature count. For S1-S4, long-term density is consistently much larger
+              than short-term density, and the LIME view shows long-term state features appearing in local explanations.
             </p>
           </div>
           <div class="shap-grid">
@@ -882,10 +977,11 @@
         <section id="takeaways">
           <div class="section-head">
             <p class="section-label">Takeaways</p>
-            <h2>What the page should make clear.</h2>
+            <h2>The modeling order is the contribution.</h2>
             <p class="lead">
-              SOLAR is not just another tabular ensemble. The contribution is the modeling order: learn the participant's
-              long-term anchor, then refine it with target-day evidence and target-specific temporal history.
+              SOLAR is not just another tabular ensemble. Its contribution is the sequence: construct personalized
+              long-term context, anchor the target-wise probability, refine the residual from day-specific evidence,
+              and preserve history-aware calibration only when it helps.
             </p>
           </div>
           <div class="code-card" aria-label="SOLAR summary pseudocode">
