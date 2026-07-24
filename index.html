@@ -3,114 +3,99 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SOLAR: Stepwise Sleep Prediction</title>
+    <title>SOLAR: Long-Term Anchoring for Sleep Prediction</title>
     <meta
       name="description"
-      content="Project page for SOLAR, a stepwise anchor-and-refine framework for lifelog-based sleep prediction."
+      content="Project page for SOLAR, a stepwise sleep prediction framework via long-term anchoring and refinement."
     >
     <style>
       :root {
         color-scheme: light;
-        --ink: #17201a;
-        --muted: #5f6b61;
-        --line: #d9ded7;
-        --paper: #fbfcf8;
+        --bg: #f8f8f3;
+        --ink: #121713;
+        --muted: #5d665f;
+        --line: #d9ddd5;
         --panel: #ffffff;
         --green: #2f6b4f;
-        --teal: #1c6f7b;
-        --gold: #b47b22;
-        --rose: #a84f55;
-        --shadow: 0 18px 50px rgba(23, 32, 26, 0.12);
-        --warm: #f1d891;
+        --lime: #b8d76b;
+        --teal: #1f7480;
+        --amber: #d79b31;
+        --red: #b75952;
+        --shadow: 0 22px 70px rgba(18, 23, 19, 0.12);
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        background: var(--paper);
+        background: var(--bg);
         color: var(--ink);
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
           "Segoe UI", sans-serif;
-        line-height: 1.58;
+        line-height: 1.55;
       }
 
       a {
         color: inherit;
       }
 
-      .hero {
-        min-height: 88vh;
+      .intro {
+        min-height: 100vh;
         display: grid;
         align-items: end;
-        padding: 32px 24px 64px;
-        background:
-          linear-gradient(90deg, rgba(251, 252, 248, 0.98) 0%, rgba(251, 252, 248, 0.9) 44%, rgba(251, 252, 248, 0.24) 100%),
-          url("assets/longterm-lime.png") right center / min(58vw, 780px) auto no-repeat,
-          #fbfcf8;
+        padding: 28px;
         border-bottom: 1px solid var(--line);
+        background:
+          linear-gradient(90deg, rgba(248, 248, 243, 0.99), rgba(248, 248, 243, 0.88) 44%, rgba(248, 248, 243, 0.2)),
+          url("assets/longterm-lime.png") right center / min(62vw, 940px) auto no-repeat;
       }
 
-      .hero-inner,
-      main > section {
-        width: min(1120px, 100%);
+      .intro-inner {
+        width: min(1180px, 100%);
         margin: 0 auto;
       }
 
-      .eyebrow {
-        margin: 0 0 14px;
-        color: var(--green);
+      .kicker {
+        margin: 0 0 22px;
+        font-family: var(--mono);
         font-size: 13px;
         font-weight: 800;
-        letter-spacing: 0;
+        color: var(--green);
         text-transform: uppercase;
       }
 
-      .topline {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-
-      .tag {
-        display: inline-flex;
-        align-items: center;
-        min-height: 28px;
-        padding: 4px 9px;
-        border: 1px solid #c9d2cb;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.72);
-        color: #344039;
-        font-size: 13px;
-        font-weight: 700;
-      }
-
       h1 {
-        max-width: 780px;
+        max-width: 900px;
         margin: 0;
-        font-size: clamp(42px, 7vw, 82px);
-        line-height: 0.98;
+        font-size: clamp(48px, 8vw, 116px);
+        line-height: 0.92;
         letter-spacing: 0;
       }
 
       .subtitle {
-        max-width: 760px;
-        margin: 24px 0 0;
-        color: #344039;
-        font-size: clamp(18px, 2vw, 23px);
+        max-width: 840px;
+        margin: 28px 0 0;
+        color: #303932;
+        font-size: clamp(19px, 2.2vw, 28px);
+        line-height: 1.32;
       }
 
       .authors {
-        margin: 18px 0 0;
+        max-width: 820px;
+        margin: 20px 0 0;
         color: var(--muted);
         font-size: 15px;
       }
 
-      .actions {
+      .links {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
@@ -121,285 +106,335 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 44px;
-        padding: 10px 16px;
+        min-height: 42px;
+        padding: 9px 15px;
         border: 1px solid var(--ink);
         border-radius: 6px;
         background: var(--ink);
         color: white;
-        font-weight: 750;
+        font-weight: 760;
         text-decoration: none;
+        transition: 140ms ease;
       }
 
       .button.secondary {
-        background: transparent;
+        background: rgba(255, 255, 255, 0.64);
         color: var(--ink);
       }
 
       .button:hover,
       .button:focus-visible {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 20px rgba(23, 32, 26, 0.14);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(18, 23, 19, 0.16);
+      }
+
+      .scroll-hint {
+        margin-top: 48px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 13px;
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: 230px minmax(0, 1fr);
+        gap: 42px;
+        width: min(1240px, calc(100% - 48px));
+        margin: 0 auto;
+        padding: 38px 0 96px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 24px;
+        align-self: start;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.74);
+      }
+
+      .toc strong {
+        display: block;
+        margin-bottom: 12px;
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      .toc a {
+        display: block;
+        padding: 7px 0;
+        border-top: 1px solid #eceee9;
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+      }
+
+      .toc a:hover {
+        color: var(--ink);
       }
 
       main {
-        padding: 64px 24px 88px;
+        min-width: 0;
+      }
+
+      section {
+        scroll-margin-top: 28px;
       }
 
       section + section {
-        margin-top: 76px;
+        margin-top: 92px;
+      }
+
+      .section-head {
+        max-width: 900px;
+        margin-bottom: 30px;
+      }
+
+      .section-label {
+        margin: 0 0 9px;
+        color: var(--green);
+        font-family: var(--mono);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
       }
 
       h2 {
-        margin: 0 0 18px;
-        font-size: clamp(27px, 4vw, 42px);
-        line-height: 1.08;
+        margin: 0;
+        font-size: clamp(32px, 5vw, 58px);
+        line-height: 1.02;
         letter-spacing: 0;
       }
 
       h3 {
         margin: 0 0 8px;
-        font-size: 19px;
-        letter-spacing: 0;
+        font-size: 20px;
+        line-height: 1.2;
       }
 
       p {
         margin: 0;
       }
 
-      .lede {
-        max-width: 860px;
-        color: #3d4941;
-        font-size: 19px;
+      .lead {
+        max-width: 870px;
+        margin-top: 18px;
+        color: #39423b;
+        font-size: 20px;
       }
 
-      .grid {
+      .abstract-text {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        color: #2d352f;
+        font-size: 18px;
+      }
+
+      .feature-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+        gap: 16px;
         margin-top: 28px;
       }
 
-      .card {
-        min-height: 178px;
-        padding: 22px;
+      .feature {
+        min-height: 180px;
+        padding: 20px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--panel);
-        box-shadow: 0 10px 28px rgba(23, 32, 26, 0.06);
-      }
-
-      .card:hover {
-        border-color: #9fb2a4;
-        transform: translateY(-2px);
         transition: 160ms ease;
       }
 
-      .card p {
+      .feature:hover {
+        border-color: #96a99b;
+        transform: translateY(-3px);
+        box-shadow: 0 14px 36px rgba(18, 23, 19, 0.09);
+      }
+
+      .feature .num {
+        display: block;
+        margin-bottom: 22px;
+        color: var(--green);
+        font-family: var(--mono);
+        font-weight: 800;
+      }
+
+      .feature p {
         color: var(--muted);
       }
 
-      .metric-grid {
+      .hero-result {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: minmax(260px, 0.72fr) minmax(420px, 1.28fr);
         gap: 22px;
-        align-items: start;
-        margin-top: 30px;
+        align-items: stretch;
       }
 
-      .score {
-        position: sticky;
-        top: 18px;
-        padding: 26px;
+      .big-score {
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 28px;
         border-radius: 8px;
-        background: #18352a;
+        background: #14251e;
         color: white;
         box-shadow: var(--shadow);
       }
 
-      .score .value {
-        margin-top: 10px;
-        font-size: clamp(56px, 9vw, 108px);
-        font-weight: 850;
-        line-height: 1;
+      .big-score .value {
+        font-size: clamp(72px, 11vw, 148px);
+        font-weight: 900;
+        line-height: 0.9;
       }
 
-      .score .label,
-      .score .note {
-        color: rgba(255, 255, 255, 0.78);
+      .big-score p {
+        color: rgba(255, 255, 255, 0.74);
       }
 
-      .score .note {
-        margin-top: 18px;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        overflow: hidden;
+      .chart-panel,
+      .media-panel,
+      .system-panel,
+      .table-panel {
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: white;
+        background: var(--panel);
+        box-shadow: 0 12px 34px rgba(18, 23, 19, 0.07);
       }
 
-      th,
-      td {
-        padding: 13px 14px;
-        border-bottom: 1px solid var(--line);
-        text-align: left;
-        transition: background 140ms ease, color 140ms ease, transform 140ms ease;
+      .chart-panel {
+        padding: 20px;
       }
 
-      th {
-        color: #31423a;
-        font-size: 13px;
-        text-transform: uppercase;
+      .bar-chart {
+        display: grid;
+        gap: 12px;
       }
 
-      tr:last-child td {
-        border-bottom: 0;
+      .bar-row {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr) 70px;
+        gap: 12px;
+        align-items: center;
+        padding: 9px;
+        border-radius: 7px;
+        cursor: default;
+        transition: 140ms ease;
       }
 
-      tbody tr {
-        position: relative;
+      .bar-row:hover,
+      .bar-row.active {
+        background: #f0f5e6;
+        transform: translateX(3px);
       }
 
-      tbody tr:hover td,
-      tbody tr:focus-within td {
-        background: #f5f8ed;
-      }
-
-      tbody tr:hover .number-cell,
-      tbody tr:focus-within .number-cell {
-        color: #123527;
-        font-weight: 900;
-        transform: scale(1.04);
-        transform-origin: left center;
-      }
-
-      .number-cell {
-        min-width: 104px;
+      .bar-row strong,
+      .bar-row span:last-child {
         font-variant-numeric: tabular-nums;
       }
 
-      .bar-cell {
-        min-width: 132px;
-      }
-
-      .bar {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 8px;
+      .track {
+        height: 12px;
         overflow: hidden;
-        border-radius: 99px;
-        background: #e6ebe5;
+        border-radius: 999px;
+        background: #e8ece5;
       }
 
-      .bar::before {
-        content: "";
+      .fill {
         display: block;
         width: var(--w);
         height: 100%;
+        border-radius: inherit;
         background: linear-gradient(90deg, var(--green), var(--teal));
+        transition: 160ms ease;
       }
 
-      tr:hover .bar::before {
-        background: linear-gradient(90deg, var(--gold), var(--rose));
+      .bar-row:hover .fill,
+      .bar-row.active .fill {
+        background: linear-gradient(90deg, var(--amber), var(--red));
       }
 
-      .best {
-        color: var(--green);
-        font-weight: 850;
+      .chart-caption {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 14px;
       }
 
-      .figure-row {
+      .system-layout {
         display: grid;
-        grid-template-columns: minmax(260px, 0.85fr) minmax(320px, 1.15fr);
+        grid-template-columns: minmax(280px, 0.86fr) minmax(420px, 1.14fr);
         gap: 22px;
-        align-items: center;
-        margin-top: 30px;
+        align-items: start;
+      }
+
+      .system-panel {
+        padding: 22px;
+      }
+
+      .flow {
+        display: grid;
+        gap: 12px;
+      }
+
+      .flow-step {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fcfdf9;
+        transition: 160ms ease;
+      }
+
+      .flow-step:hover,
+      .flow-step.active {
+        border-color: #8ca08e;
+        background: #f1f6e8;
+        transform: translateX(4px);
+      }
+
+      .flow-step b {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: white;
+        font-family: var(--mono);
+      }
+
+      .flow-step p {
+        color: var(--muted);
       }
 
       figure {
         position: relative;
         margin: 0;
-        padding: 16px;
-        border: 1px solid var(--line);
+        overflow: hidden;
         border-radius: 8px;
         background: white;
-        overflow: hidden;
-        transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
       }
 
       figure img {
         display: block;
         width: 100%;
         height: auto;
-        transition: transform 180ms ease, filter 180ms ease;
+        transition: 180ms ease;
       }
 
-      figure:hover,
-      figure:focus-within {
-        border-color: #8ba08f;
-        box-shadow: var(--shadow);
-        transform: translateY(-2px);
+      .media-panel {
+        padding: 14px;
       }
 
-      figure:hover img,
-      figure:focus-within img {
-        filter: contrast(1.08) saturate(1.05);
+      .media-panel:hover img {
         transform: scale(1.035);
-      }
-
-      .figure-note {
-        position: absolute;
-        right: 12px;
-        bottom: 12px;
-        max-width: min(360px, calc(100% - 24px));
-        padding: 10px 12px;
-        border-radius: 7px;
-        background: rgba(23, 32, 26, 0.88);
-        color: white;
-        font-size: 13px;
-        line-height: 1.35;
-        opacity: 0;
-        transform: translateY(8px);
-        transition: 160ms ease;
-        pointer-events: none;
-      }
-
-      figure:hover .figure-note,
-      figure:focus-within .figure-note {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .hover-readout {
-        position: fixed;
-        z-index: 20;
-        max-width: 280px;
-        padding: 9px 11px;
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 7px;
-        background: rgba(23, 32, 26, 0.94);
-        color: white;
-        font-size: 13px;
-        line-height: 1.35;
-        opacity: 0;
-        transform: translate(12px, 12px);
-        pointer-events: none;
-        transition: opacity 120ms ease;
-      }
-
-      .hover-readout.visible {
-        opacity: 1;
-      }
-
-      figure.method img {
-        max-width: 360px;
-        margin: 0 auto;
+        filter: contrast(1.08) saturate(1.05);
       }
 
       figcaption {
@@ -408,283 +443,489 @@
         font-size: 14px;
       }
 
-      .wide-figure {
-        margin-top: 30px;
-      }
-
-      .pipeline {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin-top: 28px;
-      }
-
-      .step {
-        padding: 18px;
-        border-left: 5px solid var(--green);
-        background: white;
-        border-radius: 8px;
-      }
-
-      .step:hover {
-        background: #f8faf4;
-        transform: translateY(-2px);
+      .figure-readout {
+        position: absolute;
+        right: 14px;
+        bottom: 14px;
+        max-width: min(420px, calc(100% - 28px));
+        padding: 10px 12px;
+        border-radius: 7px;
+        background: rgba(18, 23, 19, 0.9);
+        color: white;
+        font-size: 13px;
+        line-height: 1.35;
+        opacity: 0;
+        transform: translateY(8px);
         transition: 160ms ease;
       }
 
-      .step:nth-child(2) {
-        border-left-color: var(--teal);
-      }
-
-      .step:nth-child(3) {
-        border-left-color: var(--gold);
+      figure:hover .figure-readout,
+      figure:focus-within .figure-readout {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .split {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .table-panel {
+        overflow: hidden;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      th,
+      td {
+        padding: 13px 14px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        transition: 140ms ease;
+      }
+
+      th {
+        color: #344039;
+        font-family: var(--mono);
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      tbody tr {
+        cursor: default;
+      }
+
+      tbody tr:hover,
+      tbody tr.active {
+        background: #f0f5e6;
+      }
+
+      tbody tr:hover .num,
+      tbody tr.active .num {
+        color: #123527;
+        font-weight: 900;
+        transform: scale(1.04);
+      }
+
+      .num {
+        font-variant-numeric: tabular-nums;
+        transition: 140ms ease;
+      }
+
+      .best {
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .shap-grid {
+        display: grid;
+        grid-template-columns: minmax(360px, 0.9fr) minmax(420px, 1.1fr);
         gap: 22px;
-        margin-top: 28px;
+        align-items: start;
+      }
+
+      .density-list {
+        display: grid;
+        gap: 10px;
+        padding: 18px;
+      }
+
+      .density-row {
+        display: grid;
+        grid-template-columns: 38px minmax(0, 1fr) minmax(0, 1fr);
+        gap: 10px;
+        align-items: center;
+        padding: 8px;
+        border-radius: 7px;
+        transition: 140ms ease;
+      }
+
+      .density-row:hover {
+        background: #f0f5e6;
+      }
+
+      .mini {
+        height: 10px;
+        border-radius: 999px;
+        background: #e5e9e2;
+        overflow: hidden;
+      }
+
+      .mini i {
+        display: block;
+        width: var(--w);
+        height: 100%;
+        border-radius: inherit;
+      }
+
+      .mini.lt i {
+        background: var(--green);
+      }
+
+      .mini.st i {
+        background: var(--amber);
+      }
+
+      .code-card {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #141914;
+        color: #e8eee8;
+        font-family: var(--mono);
+        font-size: 13px;
+        overflow: auto;
+      }
+
+      .code-card span {
+        color: #b8d76b;
+      }
+
+      .hover-card {
+        position: fixed;
+        z-index: 30;
+        max-width: 310px;
+        padding: 10px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 7px;
+        background: rgba(18, 23, 19, 0.94);
+        color: white;
+        font-size: 13px;
+        line-height: 1.35;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 100ms ease;
+      }
+
+      .hover-card.visible {
+        opacity: 1;
       }
 
       footer {
-        padding: 28px 24px 42px;
+        padding: 30px 24px 44px;
         border-top: 1px solid var(--line);
         color: var(--muted);
         text-align: center;
       }
 
-      @media (max-width: 820px) {
-        .hero {
-          min-height: 760px;
-          background:
-            linear-gradient(180deg, rgba(251, 252, 248, 0.96) 0%, rgba(251, 252, 248, 0.9) 57%, rgba(251, 252, 248, 0.56) 100%),
-            url("assets/longterm-lime.png") center bottom / min(92vw, 620px) auto no-repeat,
-            #fbfcf8;
+      @media (max-width: 980px) {
+        .shell {
+          display: block;
+          width: min(100% - 32px, 760px);
         }
 
-        .grid,
-        .metric-grid,
-        .figure-row,
-        .pipeline,
-        .split {
+        .toc {
+          position: static;
+          margin-bottom: 34px;
+        }
+
+        .hero-result,
+        .system-layout,
+        .split,
+        .shap-grid,
+        .abstract-text,
+        .feature-grid {
           grid-template-columns: 1fr;
         }
 
-        .score {
-          position: static;
-        }
-
-        table {
-          font-size: 14px;
-        }
-
-        .bar-cell {
-          display: none;
+        .intro {
+          min-height: 820px;
+          padding: 22px 18px 44px;
+          background:
+            linear-gradient(180deg, rgba(248, 248, 243, 0.98), rgba(248, 248, 243, 0.9) 58%, rgba(248, 248, 243, 0.48)),
+            url("assets/longterm-lime.png") center bottom / min(94vw, 680px) auto no-repeat;
         }
       }
     </style>
   </head>
   <body>
-    <header class="hero">
-      <div class="hero-inner">
-        <p class="eyebrow">CH-2025 / Lifelog sleep prediction</p>
-        <div class="topline" aria-label="project keywords">
-          <span class="tag">Long-term baseline</span>
-          <span class="tag">Residual refinement</span>
-          <span class="tag">Target-wise calibration</span>
-        </div>
-        <h1>SOLAR: A Stepwise Sleep Prediction Framework</h1>
+    <header class="intro" id="title">
+      <div class="intro-inner">
+        <p class="kicker">SOLAR / Sleep prediction from multimodal lifelog data</p>
+        <h1>Long-term anchors, target-day corrections.</h1>
         <p class="subtitle">
-          A compact project page for our sleep prediction pipeline: build a personal anchor first, then correct it with
-          target-day sensor changes.
+          SOLAR predicts sleep-related targets by first estimating each participant's personal baseline, then refining
+          that anchor with day-specific sensor states and temporal-neighbor history.
         </p>
         <p class="authors">
-          Kyubin Kim*, Chanho Park*, Kyuho Lee*, Euntae Kim* &middot; Department of Computer Science, Korea University
+          Kyubin Kim*, Chanho Park*, Kyuho Lee*, Euntae Kim* &middot; Korea University
         </p>
-        <div class="actions">
-          <a class="button" href="assets/solar-paper.pdf">Read Paper</a>
-          <a class="button secondary" href="#method">View Method</a>
+        <div class="links">
+          <a class="button" href="assets/solar-paper.pdf">Paper PDF</a>
+          <a class="button secondary" href="#results">Results</a>
+          <a class="button secondary" href="#system">System</a>
         </div>
+        <p class="scroll-hint">Scroll to explore the method, tables, and analysis.</p>
       </div>
     </header>
 
-    <main>
-      <section id="abstract">
-        <h2>Personal Baselines Before Daily Corrections</h2>
-        <p class="lede">
-          The main idea is simple: a wearable reading means different things for different people. SOLAR reads each day
-          against that participant's own history instead of treating the target day as an isolated sample.
-        </p>
-        <div class="grid">
-          <article class="card">
-            <h3>Long-Term Features</h3>
-            <p>Rolling windows, cumulative history, same-weekday statistics, personal baselines, and missingness history.</p>
-          </article>
-          <article class="card">
-            <h3>Anchor-and-Refine</h3>
-            <p>Target-wise anchor predictions are corrected by residual learners focused on prediction-day deviations.</p>
-          </article>
-          <article class="card">
-            <h3>History-Aware Output</h3>
-            <p>Temporal-neighbor records from the same participant are used when they improve target-specific calibration.</p>
-          </article>
-        </div>
-      </section>
+    <div class="shell">
+      <nav class="toc" aria-label="Contents">
+        <strong>Contents</strong>
+        <a href="#abstract">Abstract</a>
+        <a href="#motivation">Motivation</a>
+        <a href="#results">Benchmark</a>
+        <a href="#system">SOLAR System</a>
+        <a href="#ablation">Ablation</a>
+        <a href="#analysis">Long-Term Analysis</a>
+        <a href="#takeaways">Takeaways</a>
+      </nav>
 
-      <section id="method">
-        <h2>Method</h2>
-        <p class="lede">
-          The model is split into three decisions. Each part is selected target by target, so the final prediction keeps
-          the stable personal signal while only adding corrections that help on validation data.
-        </p>
-        <div class="figure-row">
-          <figure class="method">
-            <img src="assets/method.png" alt="SOLAR method overview">
-            <span class="figure-note">Hover state: Step 1 estimates the anchor, Step 2 adds residual correction, Step 3 checks temporal-neighbor history.</span>
-            <figcaption>Overview of the SOLAR anchor-and-refine pipeline.</figcaption>
+      <main>
+        <section id="abstract">
+          <div class="section-head">
+            <p class="section-label">Abstract</p>
+            <h2>Daily sleep data needs personal context.</h2>
+            <p class="lead">
+              Wearables and smartphones produce dense behavioral and physiological traces, but a target-day value alone
+              is not enough. SOLAR explicitly separates stable individual state from temporary daily variation.
+            </p>
+          </div>
+          <div class="abstract-text">
+            <p>
+              The framework constructs long-term personalized features from accumulated behavioral history, including
+              rolling windows, cumulative statistics, same-weekday patterns, and missingness history.
+            </p>
+            <p>
+              It then generates target-specific anchors and refines them using target-day sensor states, deviations from
+              personal long-term states, and temporal-neighbor records from the same participant.
+            </p>
+          </div>
+        </section>
+
+        <section id="motivation">
+          <div class="section-head">
+            <p class="section-label">Motivation</p>
+            <h2>Short windows miss the baseline.</h2>
+            <p class="lead">
+              In the paper, 28-day heart-rate history shows stronger absolute correlations than 3-day history across
+              multiple targets. The visualization below keeps the original figure but adds a hover summary.
+            </p>
+          </div>
+          <figure class="media-panel">
+            <img src="assets/longterm-corr.png" alt="Correlation comparison between short-term and long-term heart-rate features">
+            <span class="figure-readout">Key signal: long-term heart-rate patterns often explain more target variance than short-term changes.</span>
+            <figcaption>Long-term correlation comparison from the paper.</figcaption>
           </figure>
-          <div class="pipeline">
-            <article class="step">
-              <h3>Step 1</h3>
-              <p>Generate a personalized temporal anchor from historical target behavior, calendar patterns, and long-term sensor state.</p>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <span class="num">01</span>
+              <h3>Short-term dynamics</h3>
+              <p>1-7 day features capture recent behavioral changes before the prediction date.</p>
             </article>
-            <article class="step">
-              <h3>Step 2</h3>
-              <p>Estimate residual corrections from target-day sensor state and deviations from the participant's long-term baseline.</p>
+            <article class="feature">
+              <span class="num">02</span>
+              <h3>Long-term state</h3>
+              <p>14-28 day and cumulative statistics describe the participant's habitual baseline.</p>
             </article>
-            <article class="step">
-              <h3>Step 3</h3>
-              <p>Apply target-specific history-aware refinement only when temporal-neighbor evidence improves validation performance.</p>
+            <article class="feature">
+              <span class="num">03</span>
+              <h3>Short-long contrast</h3>
+              <p>Deviation features tell the model whether today is normal for this person or a temporary shift.</p>
             </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="results">
-        <h2>Results</h2>
-        <p class="lede">
-          CH-2025 has about 450 daily records from ten subjects and seven sleep targets. Lower log-loss is better; hover
-          over the rows to compare exact values.
-        </p>
-        <div class="metric-grid">
-          <div class="score">
-            <div class="label">SOLAR test log-loss</div>
-            <div class="value">0.5560</div>
-            <p class="note">Best score against CatBoost, LightGBM, XGBoost, and SCH_CSM baselines under the same pipeline.</p>
+        <section id="results">
+          <div class="section-head">
+            <p class="section-label">Benchmark</p>
+            <h2>SOLAR reaches the lowest test log-loss.</h2>
+            <p class="lead">
+              The CH-2025 benchmark contains about 450 daily records from ten subjects and seven sleep targets. Hover
+              over bars or table rows to inspect exact scores.
+            </p>
           </div>
-          <table class="interactive-table" aria-label="Benchmark results">
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Test &darr;</th>
-                <th class="bar-cell">Relative</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-tip="CatBoost test log-loss: 0.6053"><td>CatBoost</td><td class="number-cell">0.6053</td><td class="bar-cell"><span class="bar" style="--w: 87%;"></span></td></tr>
-              <tr data-tip="LightGBM test log-loss: 0.6316"><td>LightGBM</td><td class="number-cell">0.6316</td><td class="bar-cell"><span class="bar" style="--w: 90%;"></span></td></tr>
-              <tr data-tip="XGBoost test log-loss: 0.6985"><td>XGBoost</td><td class="number-cell">0.6985</td><td class="bar-cell"><span class="bar" style="--w: 100%;"></span></td></tr>
-              <tr data-tip="SCH_CSM test log-loss: 0.6017"><td>SCH_CSM</td><td class="number-cell">0.6017</td><td class="bar-cell"><span class="bar" style="--w: 86%;"></span></td></tr>
-              <tr data-tip="SOLAR test log-loss: 0.5560"><td><strong>SOLAR</strong></td><td class="best number-cell">0.5560</td><td class="bar-cell"><span class="bar" style="--w: 80%;"></span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="split">
-          <table class="interactive-table" aria-label="Stepwise ablation">
-            <thead>
-              <tr>
-                <th>Configuration</th>
-                <th>OOF &darr;</th>
-                <th>Test &darr;</th>
-                <th class="bar-cell">Test</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-tip="Anchor only: OOF 0.5815, test 0.5642"><td>SOLAR w/o step 2 + 3</td><td class="number-cell">0.5815</td><td class="number-cell">0.5642</td><td class="bar-cell"><span class="bar" style="--w: 100%;"></span></td></tr>
-              <tr data-tip="Anchor + residual: OOF 0.5807, test 0.5626"><td>SOLAR w/o step 3</td><td class="number-cell">0.5807</td><td class="number-cell">0.5626</td><td class="bar-cell"><span class="bar" style="--w: 99%;"></span></td></tr>
-              <tr data-tip="Full SOLAR: OOF 0.5760, test 0.5560"><td><strong>SOLAR</strong></td><td class="best number-cell">0.5760</td><td class="best number-cell">0.5560</td><td class="bar-cell"><span class="bar" style="--w: 99%;"></span></td></tr>
-            </tbody>
-          </table>
-          <table class="interactive-table" aria-label="Long-term feature ablation">
-            <thead>
-              <tr>
-                <th>Configuration</th>
-                <th>OOF &darr;</th>
-                <th>Test &darr;</th>
-                <th class="bar-cell">Test</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-tip="Without long-term features: OOF 0.5818, test 0.5739"><td>SOLAR w/o long-term</td><td class="number-cell">0.5818</td><td class="number-cell">0.5739</td><td class="bar-cell"><span class="bar" style="--w: 100%;"></span></td></tr>
-              <tr data-tip="With long-term features: OOF 0.5760, test 0.5560"><td><strong>SOLAR</strong></td><td class="best number-cell">0.5760</td><td class="best number-cell">0.5560</td><td class="bar-cell"><span class="bar" style="--w: 97%;"></span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+          <div class="hero-result">
+            <div class="big-score">
+              <div>
+                <p>Average test log-loss</p>
+                <div class="value">0.5560</div>
+              </div>
+              <p>Lower is better. SOLAR improves over CatBoost, LightGBM, XGBoost, and SCH_CSM under the same preprocessing and evaluation setup.</p>
+            </div>
+            <div class="chart-panel">
+              <div class="bar-chart" aria-label="Model test log-loss comparison">
+                <div class="bar-row" data-tip="CatBoost test log-loss: 0.6053">
+                  <strong>CatBoost</strong><span class="track"><i class="fill" style="--w: 87%;"></i></span><span>0.6053</span>
+                </div>
+                <div class="bar-row" data-tip="LightGBM test log-loss: 0.6316">
+                  <strong>LightGBM</strong><span class="track"><i class="fill" style="--w: 90%;"></i></span><span>0.6316</span>
+                </div>
+                <div class="bar-row" data-tip="XGBoost test log-loss: 0.6985">
+                  <strong>XGBoost</strong><span class="track"><i class="fill" style="--w: 100%;"></i></span><span>0.6985</span>
+                </div>
+                <div class="bar-row" data-tip="SCH_CSM test log-loss: 0.6017">
+                  <strong>SCH_CSM</strong><span class="track"><i class="fill" style="--w: 86%;"></i></span><span>0.6017</span>
+                </div>
+                <div class="bar-row" data-tip="SOLAR test log-loss: 0.5560">
+                  <strong>SOLAR</strong><span class="track"><i class="fill" style="--w: 80%;"></i></span><span class="best">0.5560</span>
+                </div>
+              </div>
+              <p class="chart-caption">Bar length is normalized to XGBoost, the largest log-loss in the comparison.</p>
+            </div>
+          </div>
+        </section>
 
-      <section id="analysis">
-        <h2>Long-Term Signal Analysis</h2>
-        <p class="lede">
-          The strongest pattern appears in the objective targets. For S1-S4, long-term feature density is much larger
-          than short-term density, which matches the motivation for separating baseline and day-specific change.
-        </p>
-        <div class="figure-row">
-          <figure>
-            <img src="assets/longterm-corr.png" alt="Long-term correlation comparison">
-            <span class="figure-note">Longer history windows show stronger correlations on several sleep targets.</span>
-            <figcaption>Longer historical windows provide stronger correlations for several sleep targets.</figcaption>
-          </figure>
-          <table class="interactive-table" aria-label="SHAP density summary">
-            <thead>
-              <tr>
-                <th>Target</th>
-                <th>Long-Term Density</th>
-                <th>Short-Term Density</th>
-                <th class="bar-cell">LT / ST</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-tip="Q1: long-term 0.52, short-term 0.77"><td>Q1</td><td class="number-cell">0.52</td><td class="best number-cell">0.77</td><td class="bar-cell"><span class="bar" style="--w: 68%;"></span></td></tr>
-              <tr data-tip="Q2: long-term 1.79, short-term 1.09"><td>Q2</td><td class="best number-cell">1.79</td><td class="number-cell">1.09</td><td class="bar-cell"><span class="bar" style="--w: 100%;"></span></td></tr>
-              <tr data-tip="Q3: long-term 0.69, short-term 0.92"><td>Q3</td><td class="number-cell">0.69</td><td class="best number-cell">0.92</td><td class="bar-cell"><span class="bar" style="--w: 75%;"></span></td></tr>
-              <tr data-tip="S1: long-term 4.14, short-term 0.64"><td>S1</td><td class="best number-cell">4.14</td><td class="number-cell">0.64</td><td class="bar-cell"><span class="bar" style="--w: 100%;"></span></td></tr>
-              <tr data-tip="S2: long-term 5.97, short-term 0.88"><td>S2</td><td class="best number-cell">5.97</td><td class="number-cell">0.88</td><td class="bar-cell"><span class="bar" style="--w: 100%;"></span></td></tr>
-              <tr data-tip="S3: long-term 5.68, short-term 0.69"><td>S3</td><td class="best number-cell">5.68</td><td class="number-cell">0.69</td><td class="bar-cell"><span class="bar" style="--w: 100%;"></span></td></tr>
-              <tr data-tip="S4: long-term 6.13, short-term 0.84"><td>S4</td><td class="best number-cell">6.13</td><td class="number-cell">0.84</td><td class="bar-cell"><span class="bar" style="--w: 100%;"></span></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <figure class="wide-figure">
-          <img src="assets/longterm-lime.png" alt="LIME explanation for long-term features">
-          <span class="figure-note">Local explanations repeatedly surface long-term state features, especially on S-series targets.</span>
-          <figcaption>Top local explanations show long-term state features contributing across multiple targets.</figcaption>
-        </figure>
-      </section>
-    </main>
+        <section id="system">
+          <div class="section-head">
+            <p class="section-label">SOLAR System</p>
+            <h2>Anchor first, refine only what remains.</h2>
+            <p class="lead">
+              The page follows the paper pipeline: feature construction, temporal anchor prediction, residual
+              refinement, then target-specific history-aware adjustment.
+            </p>
+          </div>
+          <div class="system-layout">
+            <div class="system-panel">
+              <div class="flow" aria-label="SOLAR pipeline">
+                <div class="flow-step" data-tip="Feature construction: short-term, long-term, contrast, and personalized missingness features.">
+                  <b>F</b>
+                  <div><h3>Personalized features</h3><p>Build temporal and subject-specific representations from lifelog history.</p></div>
+                </div>
+                <div class="flow-step" data-tip="Step 1: target-wise stacking produces the personalized temporal anchor.">
+                  <b>1</b>
+                  <div><h3>Temporal anchor</h3><p>Estimate a baseline probability from long-term state and calendar/history priors.</p></div>
+                </div>
+                <div class="flow-step" data-tip="Step 2: residual learners correct the anchor using target-day deviations.">
+                  <b>2</b>
+                  <div><h3>Residual refinement</h3><p>Add only the correction that target-day sensor evidence supports.</p></div>
+                </div>
+                <div class="flow-step" data-tip="Step 3: temporal-neighbor priors are applied target by target when validation improves.">
+                  <b>3</b>
+                  <div><h3>History-aware output</h3><p>Use nearby records from the same participant for conservative calibration.</p></div>
+                </div>
+              </div>
+            </div>
+            <figure class="media-panel">
+              <img src="assets/method.png" alt="SOLAR method overview diagram">
+              <span class="figure-readout">Pipeline figure: long-term state creates the anchor; day-specific variation and temporal neighbors refine it.</span>
+              <figcaption>Method overview from the paper.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="ablation">
+          <div class="section-head">
+            <p class="section-label">Ablation</p>
+            <h2>Each stage contributes, and long-term features matter.</h2>
+            <p class="lead">
+              The ablations are kept as interactive tables. Hover a row to pin the exact OOF and test values.
+            </p>
+          </div>
+          <div class="split">
+            <div class="table-panel">
+              <table aria-label="Stepwise model ablation">
+                <thead>
+                  <tr><th>Configuration</th><th>OOF</th><th>Test</th></tr>
+                </thead>
+                <tbody>
+                  <tr data-tip="Step 1 only: OOF 0.5815, test 0.5642"><td>SOLAR w/o step 2 + 3</td><td class="num">0.5815</td><td class="num">0.5642</td></tr>
+                  <tr data-tip="Step 1 + Step 2: OOF 0.5807, test 0.5626"><td>SOLAR w/o step 3</td><td class="num">0.5807</td><td class="num">0.5626</td></tr>
+                  <tr data-tip="Full SOLAR: OOF 0.5760, test 0.5560"><td><strong>SOLAR</strong></td><td class="best num">0.5760</td><td class="best num">0.5560</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-panel">
+              <table aria-label="Long-term feature ablation">
+                <thead>
+                  <tr><th>Configuration</th><th>OOF</th><th>Test</th></tr>
+                </thead>
+                <tbody>
+                  <tr data-tip="Without long-term features: OOF 0.5818, test 0.5739"><td>SOLAR w/o long-term</td><td class="num">0.5818</td><td class="num">0.5739</td></tr>
+                  <tr data-tip="With long-term features: OOF 0.5760, test 0.5560"><td><strong>SOLAR</strong></td><td class="best num">0.5760</td><td class="best num">0.5560</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="analysis">
+          <div class="section-head">
+            <p class="section-label">Long-Term Analysis</p>
+            <h2>Objective targets rely more heavily on long-term density.</h2>
+            <p class="lead">
+              SHAP density is normalized by feature count. The S-series targets consistently show stronger long-term
+              density than short-term density.
+            </p>
+          </div>
+          <div class="shap-grid">
+            <div class="table-panel">
+              <div class="density-list" aria-label="SHAP density comparison">
+                <div class="density-row" data-tip="Q1: long-term 0.52, short-term 0.77"><strong>Q1</strong><span class="mini lt"><i style="--w: 9%;"></i></span><span class="mini st"><i style="--w: 13%;"></i></span></div>
+                <div class="density-row" data-tip="Q2: long-term 1.79, short-term 1.09"><strong>Q2</strong><span class="mini lt"><i style="--w: 29%;"></i></span><span class="mini st"><i style="--w: 18%;"></i></span></div>
+                <div class="density-row" data-tip="Q3: long-term 0.69, short-term 0.92"><strong>Q3</strong><span class="mini lt"><i style="--w: 11%;"></i></span><span class="mini st"><i style="--w: 15%;"></i></span></div>
+                <div class="density-row" data-tip="S1: long-term 4.14, short-term 0.64"><strong>S1</strong><span class="mini lt"><i style="--w: 68%;"></i></span><span class="mini st"><i style="--w: 10%;"></i></span></div>
+                <div class="density-row" data-tip="S2: long-term 5.97, short-term 0.88"><strong>S2</strong><span class="mini lt"><i style="--w: 97%;"></i></span><span class="mini st"><i style="--w: 14%;"></i></span></div>
+                <div class="density-row" data-tip="S3: long-term 5.68, short-term 0.69"><strong>S3</strong><span class="mini lt"><i style="--w: 93%;"></i></span><span class="mini st"><i style="--w: 11%;"></i></span></div>
+                <div class="density-row" data-tip="S4: long-term 6.13, short-term 0.84"><strong>S4</strong><span class="mini lt"><i style="--w: 100%;"></i></span><span class="mini st"><i style="--w: 14%;"></i></span></div>
+              </div>
+              <p class="chart-caption" style="padding: 0 18px 18px;">Green = long-term density, amber = short-term density.</p>
+            </div>
+            <figure class="media-panel">
+              <img src="assets/longterm-lime.png" alt="LIME explanations for long-term features across sleep targets">
+              <span class="figure-readout">LIME view: long-term state features appear among salient local explanations, especially for objective sleep indicators.</span>
+              <figcaption>LIME explanation figure from the paper.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="takeaways">
+          <div class="section-head">
+            <p class="section-label">Takeaways</p>
+            <h2>What the page should make clear.</h2>
+            <p class="lead">
+              SOLAR is not just another tabular ensemble. The contribution is the modeling order: learn the participant's
+              long-term anchor, then refine it with target-day evidence and target-specific temporal history.
+            </p>
+          </div>
+          <div class="code-card" aria-label="SOLAR summary pseudocode">
+<pre><span>features</span> = short_term + long_term + short_long_contrast + participant_history
+<span>anchor</span>   = stack_targetwise(history_priors, calendar_priors, long_term_sensor_sources)
+<span>residual</span> = learn_target_day_correction(anchor, personalized_day_state)
+<span>output</span>   = history_aware_refine(anchor + residual, temporal_neighbors)</pre>
+          </div>
+        </section>
+      </main>
+    </div>
 
     <footer>
       SOLAR project page &middot; Korea University &middot; * Equal contribution
     </footer>
-    <div class="hover-readout" role="status" aria-live="polite"></div>
-    <script>
-      const readout = document.querySelector(".hover-readout");
-      const rows = document.querySelectorAll("[data-tip]");
 
-      rows.forEach((row) => {
-        row.addEventListener("pointerenter", () => {
-          readout.textContent = row.dataset.tip;
-          readout.classList.add("visible");
+    <div class="hover-card" role="status" aria-live="polite"></div>
+    <script>
+      const hoverCard = document.querySelector(".hover-card");
+      const items = document.querySelectorAll("[data-tip]");
+
+      function moveCard(event) {
+        const gap = 14;
+        const x = Math.min(event.clientX + gap, window.innerWidth - hoverCard.offsetWidth - gap);
+        const y = Math.min(event.clientY + gap, window.innerHeight - hoverCard.offsetHeight - gap);
+        hoverCard.style.left = `${x}px`;
+        hoverCard.style.top = `${y}px`;
+      }
+
+      items.forEach((item) => {
+        item.addEventListener("pointerenter", (event) => {
+          hoverCard.textContent = item.dataset.tip;
+          item.classList.add("active");
+          hoverCard.classList.add("visible");
+          moveCard(event);
         });
-        row.addEventListener("pointermove", (event) => {
-          const offset = 14;
-          const x = Math.min(event.clientX + offset, window.innerWidth - readout.offsetWidth - offset);
-          const y = Math.min(event.clientY + offset, window.innerHeight - readout.offsetHeight - offset);
-          readout.style.left = `${x}px`;
-          readout.style.top = `${y}px`;
-        });
-        row.addEventListener("pointerleave", () => {
-          readout.classList.remove("visible");
+        item.addEventListener("pointermove", moveCard);
+        item.addEventListener("pointerleave", () => {
+          item.classList.remove("active");
+          hoverCard.classList.remove("visible");
         });
       });
     </script>
