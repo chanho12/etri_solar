@@ -5,7 +5,7 @@
 <title>SOLAR: A Stepwise Sleep Prediction Framework</title>
 <meta name="description" content="SOLAR separates long-term personal states from daily changes for multimodal lifelog-based sleep prediction. Paper, code, slides, and model report.">
 <meta property="og:title" content="SOLAR: Long-Term Anchoring and Refinement"><meta property="og:description" content="A stepwise framework for personalized sleep prediction. Explore the method, results, paper, and reproducible code."><meta property="og:type" content="website"><meta property="og:url" content="https://chanho12.github.io/etri_solar/"><meta property="og:image" content="https://chanho12.github.io/etri_solar/assets/social-preview.png"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css"><script src="assets/site.js" defer></script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -27,7 +27,7 @@
 <div class="stage stage-red"><span class="stage-number">02</span><span class="stage-label">DAY-SPECIFIC CHANGE</span><h2>Refine</h2><p>Model how today differs <br>from the baseline</p><span class="stage-output">Residual correction</span></div><span class="pipeline-arrow" aria-hidden="true">→</span>
 <div class="stage stage-green"><span class="stage-number">03</span><span class="stage-label">TEMPORAL HISTORY</span><h2>Personalize</h2><p>Use nearby history <br>where it helps</p><span class="stage-output">Target-wise refinement</span></div></div>
 <p class="teaser-caption"><strong>Long-term history sets the anchor. Daily changes refine it.</strong><br>SOLAR predicts seven subjective and objective sleep outcomes from personal lifelog data.</p></section>
-<nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#analysis">Analysis</a><a href="#resources">Resources</a><a href="#citation">BibTeX</a></nav>
+<nav class="section-nav" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#analysis">Analysis</a><a href="#resources">Resources</a></nav>
 <section class="section shaded" id="abstract"><div class="container narrow"><h2 class="section-title">Abstract</h2><p class="abstract-copy">Existing lifelog-based sleep prediction methods use multimodal smartphone and wearable data for daily sleep prediction but mainly rely on daily observations or short-term statistics, limiting their ability to capture long-term states. Furthermore, they often encode long-term states and day-specific variations in a single representation, making it difficult to distinguish their respective effects on sleep outcomes. To address these limitations, we propose SOLAR, a stepwise anchor-and-refine framework. We first construct long-term personalized features from accumulated behavioral history to capture each individual's long-term states. The framework then generates target-specific anchors and refines them using day-specific sensor states, variations from personal long-term states, and temporal-neighbor history. Experimental results show that SOLAR outperforms other baseline methods.</p></div></section>
 <section class="section" id="method"><div class="container"><h2 class="section-title">The SOLAR Framework</h2><p class="section-intro">Separate what is typical for a person from what changed on a particular day.</p>
 <div class="method-layout"><figure class="method-figure"><a href="assets/method.png" aria-label="Open the full SOLAR framework figure"><img src="assets/method.png" alt="SOLAR architecture: feature construction, multi-source prediction and target-wise stacking, day-specific residual refinement, and a temporal-neighbor prior." width="760" height="1048" loading="lazy"></a><figcaption>Figure 2 from the paper. SOLAR overview.</figcaption></figure>
@@ -49,14 +49,6 @@ cd etri_solar/code
 # Place the official challenge inputs in code/data/.
 ./setup_conda.sh
 ./run_solar.sh</code></pre><p>Requires a 64-bit Linux environment with Conda. Raw challenge data must be obtained separately. The final output is <code>data/submissions/submission_final.csv</code>.</p><a class="text-link" href="https://github.com/chanho12/etri_solar/tree/main/code">Code, data layout, and reproduction instructions →</a></div></div></section>
-<section class="section" id="citation"><div class="container narrow"><div class="citation-heading"><h2 class="section-title">BibTeX</h2><button class="copy-button" type="button" id="copy-citation">Copy</button></div><pre class="citation"><code id="bibtex">@misc{kim2026solar,
-  title  = {SOLAR: A Stepwise Sleep Prediction Framework
-            via Long-Term Anchoring and Refinement},
-  author = {Kim, Kyubin and Park, Chanho and
-            Lee, Kyuho and Kim, Euntae},
-  year   = {2026},
-  url    = {https://chanho12.github.io/etri_solar/}
-}</code></pre><p class="citation-note">Project citation. Use the publisher's bibliographic record when available.</p><span id="copy-status" class="sr-only" role="status" aria-live="polite"></span></div></section>
 </main>
 <footer><div class="container"><p><strong>SOLAR</strong> · Korea University</p><p><a href="https://github.com/chanho12/etri_solar">GitHub</a> · <a href="https://drive.google.com/file/d/18jN1ZuiLQeukAqOCAjvDY2MZCu7U_5IE/view?usp=sharing">Paper</a></p><p class="credits">Page layout inspired by <a href="https://conversation-chronicles.github.io/">Conversation Chronicles</a>. Figures and results from the SOLAR paper.</p></div></footer>
 </body></html>

@@ -66,18 +66,3 @@ python3 -m http.server 8000
 ```
 
 Open `http://localhost:8000`. The layout is inspired by [Conversation Chronicles](https://conversation-chronicles.github.io/); the page implementation is original and the figures come from the SOLAR paper.
-
-## Citation
-
-```bibtex
-@misc{kim2026solar,
-  title  = {SOLAR: A Stepwise Sleep Prediction Framework
-            via Long-Term Anchoring and Refinement},
-  author = {Kim, Kyubin and Park, Chanho and
-            Lee, Kyuho and Kim, Euntae},
-  year   = {2026},
-  url    = {https://chanho12.github.io/etri_solar/}
-}
-```
-
-This is a project citation; use the publisher's bibliographic record when available.
