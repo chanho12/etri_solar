@@ -56,13 +56,3 @@ Average test Log-Loss across seven targets; lower is better. These values are fr
 | XGBoost | 0.6985 |
 | SCH CSM (CatBoost–LightGBM) | 0.6017 |
 | **SOLAR** | **0.5560** |
-
-## Website
-
-The website uses plain HTML, CSS, and JavaScript. GitHub Pages serves `main` from the repository root; no build step is needed. To preview locally:
-
-```bash
-python3 -m http.server 8000
-```
-
-Open `http://localhost:8000`. The layout is inspired by [Conversation Chronicles](https://conversation-chronicles.github.io/); the page implementation is original and the figures come from the SOLAR paper.
