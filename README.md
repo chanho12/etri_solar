@@ -26,9 +26,7 @@ Department of Computer Science, Korea University<br>
 
 **느낀점**
 
-> 논문이라는 틀 안에서 연구에 최선을 다했고, 특히 우리가 실험한 내용과 전하고자 하는 바를 논문으로 잘 전달한 점이 종합평가 1위로 이어진 것 같다.
-
-[Official competition](https://dacon.io/competitions/official/236690/overview/description) · [Award-winning teams announcement](https://dacon.io/competitions/official/236690/talkboard/417904) · [Evaluation criteria](https://dacon.io/competitions/official/236690/overview/evaluation)
+> 작년 팀들의 논문을 읽으면서 논문 작성에 최대한 기여하려고 했다. 말하고자 하는 바가 잘 전달되도록 논문 작성에 많은 시간을 썼고, 대학원생으로서 학위 과정 동안 배운 내용을 적용해 우리가 전하고자 하는 바를 명확하게 전달하려고 했다.
 
 ## About SOLAR
 
