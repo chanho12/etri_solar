@@ -2,6 +2,15 @@
 
 **A Stepwise Sleep Prediction Framework via Long-Term Anchoring and Refinement**
 
+> 🏆 **1st Place · ETRI Award**<br>
+> **멀왕팀 — 제5회 ETRI 휴먼이해 인공지능 논문경진대회 최종 종합평가 1위 · ETRI 수상**
+
+Developed by **Team 멀왕** at Korea University. SOLAR won **1st place in the final overall evaluation** of the **5th ETRI Human Understanding AI Paper Challenge** and received an award from **ETRI (Electronics and Telecommunications Research Institute)**.
+
+The award ceremony was held at **ICTC 2026 in Jeju on October 15, 2026**. The final award ranking is determined through paper evaluation and reproducibility verification, separately from the prediction leaderboard.
+
+[Official competition](https://dacon.io/competitions/official/236690/overview/description) · [Award-winning teams announcement](https://dacon.io/competitions/official/236690/talkboard/417904) · [Evaluation criteria](https://dacon.io/competitions/official/236690/overview/evaluation)
+
 Kyubin Kim*, Chanho Park*, Kyuho Lee*, Euntae Kim*<br>
 Department of Computer Science, Korea University<br>
 \* Equal contribution
