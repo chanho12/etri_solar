@@ -2,20 +2,35 @@
 
 **A Stepwise Sleep Prediction Framework via Long-Term Anchoring and Refinement**
 
-> 🏆 **1st Place · ETRI Award**<br>
-> **멀왕팀 — 제5회 ETRI 휴먼이해 인공지능 논문경진대회 최종 종합평가 1위 · ETRI 수상**
-
-Developed by **Team 멀왕** at Korea University. SOLAR won **1st place in the final overall evaluation** of the **5th ETRI Human Understanding AI Paper Challenge** and received an award from **ETRI (Electronics and Telecommunications Research Institute)**.
-
-The award ceremony was held at **ICTC 2026 in Jeju on October 15, 2026**. The final award ranking is determined through paper evaluation and reproducibility verification, separately from the prediction leaderboard.
-
-[Official competition](https://dacon.io/competitions/official/236690/overview/description) · [Award-winning teams announcement](https://dacon.io/competitions/official/236690/talkboard/417904) · [Evaluation criteria](https://dacon.io/competitions/official/236690/overview/evaluation)
+> 🏆 **Grand Prize · 1st Place in the Final Overall Evaluation**<br>
+> **멀왕팀 — 제5회 ETRI 휴먼이해 인공지능 논문경진대회 대상 · 과학기술정보통신부장관상**
 
 Kyubin Kim*, Chanho Park*, Kyuho Lee*, Euntae Kim*<br>
 Department of Computer Science, Korea University<br>
 \* Equal contribution
 
 [Project page](https://chanho12.github.io/etri_solar/) · [Paper](https://drive.google.com/file/d/18jN1ZuiLQeukAqOCAjvDY2MZCu7U_5IE/view?usp=sharing) · [Code](code/) · [Slides](docs/solar-slides.pdf) · [Model report](docs/model-report.pdf)
+
+## 🏆 Grand Prize — Team 멀왕
+
+**멀왕팀**은 **제5회 ETRI 휴먼이해 인공지능 논문경진대회**에서 **최종 종합평가 1위**를 차지하며 **대상(과학기술정보통신부장관상)**을 수상했습니다. 시상식은 **2026년 10월 15일, 제주 ICTC 2026**에서 진행되었습니다.
+
+**Team 멀왕** at Korea University won the **Grand Prize (Minister of Science and ICT Award)** and **1st place in the final overall evaluation** of the **5th ETRI Human Understanding AI Paper Challenge**. The final award evaluation considers the research paper and reproducibility verification separately from the prediction leaderboard.
+
+<p align="center">
+  <a href="assets/awards/etri-grand-prize-2026.jpg">
+    <img src="assets/awards/etri-grand-prize-2026.jpg" alt="멀왕팀의 제5회 ETRI 휴먼이해 인공지능 논문경진대회 대상 상장과 시상 보드 — 과학기술정보통신부장관상, 2026년 10월 15일" width="400">
+  </a>
+</p>
+<p align="center"><sub>멀왕팀 대상 수상 — 과학기술정보통신부장관상 · 2026.10.15</sub></p>
+
+**느낀점**
+
+> 논문이라는 틀 안에서 연구에 최선을 다했고, 특히 우리가 실험한 내용과 전하고자 하는 바를 논문으로 잘 전달한 점이 종합평가 1위로 이어진 것 같다.
+
+[Official competition](https://dacon.io/competitions/official/236690/overview/description) · [Award-winning teams announcement](https://dacon.io/competitions/official/236690/talkboard/417904) · [Evaluation criteria](https://dacon.io/competitions/official/236690/overview/evaluation)
+
+## About SOLAR
 
 SOLAR predicts seven daily sleep-related probabilities from smartphone and wearable lifelog data. It separates long-term personalized anchoring, day-specific residual refinement, and target-specific history-aware refinement.
 
